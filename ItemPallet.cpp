@@ -71,7 +71,13 @@ void ItemPallet::readTextfile(string filename) {
 void ItemPallet::addItem(string itemName, unsigned int sku) {
   // TO BE COMPLETED
   // function that adds the specified SKU to the pallet (i.e., to all hash tables)
-    
+    Item new_item(itemName, sku);
+    hT1.insert(std::make_pair(sku, new_item));
+    hT2.insert(std::make_pair(sku, new_item));
+    hT3.insert(std::make_pair(sku, new_item));
+    hT4.insert(std::make_pair(sku, new_item));
+    hT5.insert(std::make_pair(sku, new_item));
+    hT6.insert(std::make_pair(sku, new_item));
 }
 
 bool ItemPallet::removeItem(unsigned int sku) {
