@@ -71,13 +71,13 @@ void ItemPallet::readTextfile(string filename) {
 void ItemPallet::addItem(string itemName, unsigned int sku) {
   // TO BE COMPLETED
   // function that adds the specified SKU to the pallet (i.e., to all hash tables)
-    Item new_item(itemName, sku);
-    hT1.insert(std::make_pair(sku, new_item));
-    hT2.insert(std::make_pair(sku, new_item));
-    hT3.insert(std::make_pair(sku, new_item));
-    hT4.insert(std::make_pair(sku, new_item));
-    hT5.insert(std::make_pair(sku, new_item));
-    hT6.insert(std::make_pair(sku, new_item));
+  Item new_item(itemName, sku);
+  hT1.insert(std::make_pair(sku, new_item));
+  hT2.insert(std::make_pair(sku, new_item));
+  hT3.insert(std::make_pair(sku, new_item));
+  hT4.insert(std::make_pair(sku, new_item));
+  hT5.insert(std::make_pair(sku, new_item));
+  hT6.insert(std::make_pair(sku, new_item));
 }
 
 bool ItemPallet::removeItem(unsigned int sku) {
@@ -105,8 +105,66 @@ unsigned int ItemPallet::bestHashing() {
   }
 	*/
 	// Then, calculate the lowest balance
-    
-    return 100;
+  unsigned int min, max = hT1.bucket_size(0);
+  for (auto i = 1; i < 10; i++) {
+    if (hT1.bucket_size(i) < min)
+      min = hT1.bucket_size(i);
+    else if (hT1.bucket_size(i) > max)
+      max = hT1.bucket_size(i);
+  }
+  unsigned int best = max - min;
+  
+  min, max = hT2.bucket_size(0);
+  for (auto i = 1; i < 10; i++) {
+    if (hT2.bucket_size(i) < min)
+      min = hT2.bucket_size(i);
+    else if (hT2.bucket_size(i) > max)
+      max = hT2.bucket_size(i);
+  }
+  if (max - min < best)
+    best = max - min;
+  
+  min, max = hT3.bucket_size(0);
+  for (auto i = 1; i < 10; i++) {
+    if (hT3.bucket_size(i) < min)
+      min = hT3.bucket_size(i);
+    else if (hT3.bucket_size(i) > max)
+      max = hT3.bucket_size(i);
+  }
+  if (max - min < best)
+    best = max - min;
+
+  min, max = hT4.bucket_size(0);
+  for (auto i = 1; i < 10; i++) {
+    if (hT4.bucket_size(i) < min)
+      min = hT4.bucket_size(i);
+    else if (hT4.bucket_size(i) > max)
+      max = hT4.bucket_size(i);
+  }
+  if (max - min < best)
+    best = max - min;
+
+  min, max = hT5.bucket_size(0);
+  for (auto i = 1; i < 10; i++) {
+    if (hT5.bucket_size(i) < min)
+      min = hT5.bucket_size(i);
+    else if (hT5.bucket_size(i) > max)
+      max = hT5.bucket_size(i);
+  }
+  if (max - min < best)
+    best = max - min;
+
+  min, max = hT6.bucket_size(0);
+  for (auto i = 1; i < 10; i++) {
+    if (hT6.bucket_size(i) < min)
+      min = hT6.bucket_size(i);
+    else if (hT6.bucket_size(i) > max)
+      max = hT6.bucket_size(i);
+  }
+  if (max - min < best)
+    best = max - min;
+
+  return best;
 
 }
 
