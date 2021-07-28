@@ -107,64 +107,25 @@ unsigned int ItemPallet::bestHashing() {
 	// Then, calculate the lowest balance
   unsigned int min, max = hT1.bucket_size(0);
   for (auto i = 1; i < 10; i++) {
-    if (hT1.bucket_size(i) < min)
-      min = hT1.bucket_size(i);
-    else if (hT1.bucket_size(i) > max)
-      max = hT1.bucket_size(i);
+    unsigned int bucket = hT1.bucket_size(i);
+    if (bucket < min)
+      min = bucket;
+    else if (bucket > max)
+      max = bucket;
   }
   unsigned int best = max - min;
-  
+
   min, max = hT2.bucket_size(0);
   for (auto i = 1; i < 10; i++) {
-    if (hT2.bucket_size(i) < min)
-      min = hT2.bucket_size(i);
-    else if (hT2.bucket_size(i) > max)
-      max = hT2.bucket_size(i);
+    unsigned int bucket = hT2.bucket_size(i);
+    if (bucket < min)
+      min = bucket;
+    else if (bucket > max)
+      max = bucket;
   }
-  if (max - min < best)
-    best = max - min;
-  
-  min, max = hT3.bucket_size(0);
-  for (auto i = 1; i < 10; i++) {
-    if (hT3.bucket_size(i) < min)
-      min = hT3.bucket_size(i);
-    else if (hT3.bucket_size(i) > max)
-      max = hT3.bucket_size(i);
-  }
-  if (max - min < best)
-    best = max - min;
+  best = max - min;
 
-  min, max = hT4.bucket_size(0);
-  for (auto i = 1; i < 10; i++) {
-    if (hT4.bucket_size(i) < min)
-      min = hT4.bucket_size(i);
-    else if (hT4.bucket_size(i) > max)
-      max = hT4.bucket_size(i);
-  }
-  if (max - min < best)
-    best = max - min;
-
-  min, max = hT5.bucket_size(0);
-  for (auto i = 1; i < 10; i++) {
-    if (hT5.bucket_size(i) < min)
-      min = hT5.bucket_size(i);
-    else if (hT5.bucket_size(i) > max)
-      max = hT5.bucket_size(i);
-  }
-  if (max - min < best)
-    best = max - min;
-
-  min, max = hT6.bucket_size(0);
-  for (auto i = 1; i < 10; i++) {
-    if (hT6.bucket_size(i) < min)
-      min = hT6.bucket_size(i);
-    else if (hT6.bucket_size(i) > max)
-      max = hT6.bucket_size(i);
-  }
-  if (max - min < best)
-    best = max - min;
-
-  return best;
+  return 100;
 
 }
 
