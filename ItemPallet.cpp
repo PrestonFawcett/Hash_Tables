@@ -12,37 +12,37 @@ using std::endl;
 // function to return the hash value based on the first digit
 unsigned int hashfct1(unsigned int sku) {
   // TODO: implement this function, then delete the return statement below
-	return 100;
+	return sku / 100000;
 }
 
 // function to return the hash value based on the second digit
 unsigned int hashfct2(unsigned int sku) {
    // TODO: implement this function, then delete the return statement below
-	return 100;
+	return sku / 10000 % 10;
 }
 
 // function to return the hash value based on the third digit
 unsigned int hashfct3(unsigned int sku) {
    // TODO: implement this function, then delete the return statement below
-	return 100;
+	return sku / 1000 % 10;
 }
 
 // function to return the hash value based on the fourth digit
 unsigned int hashfct4(unsigned int sku) {
    // TODO: implement this function, then delete the return statement below
-	return 100;
+	return sku / 100 % 10;
 }
 
 // function to return the hash value based on the fifth digit
 unsigned int hashfct5(unsigned int sku) {
     // TODO: implement this function, then delete the return statement below
-	return 100;
+	return sku / 10 % 10;
 }
 
 // function to return the hash value based on the fourth digit
 unsigned int hashfct6(unsigned int sku) {
     // TODO: implement this function, then delete the return statement below
-	return 100;
+	return sku % 10;
 }
 
 // Constructor for struct Item
