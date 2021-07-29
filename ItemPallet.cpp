@@ -105,7 +105,8 @@ unsigned int ItemPallet::bestHashing() {
   }
 	*/
 	// Then, calculate the lowest balance
-  unsigned int min, max = hT1.bucket_size(0);
+  unsigned int min = hT1.bucket_size(0);
+  unsigned int max = min;
   for (auto i = 1; i < 10; i++) {
     unsigned int bucket = hT1.bucket_size(i);
     if (bucket < min)
@@ -113,9 +114,11 @@ unsigned int ItemPallet::bestHashing() {
     else if (bucket > max)
       max = bucket;
   }
-  unsigned int best = max - min;
+  unsigned int best_balance = max - min;
+  unsigned int best_hash_table = 1;
 
-  min, max = hT2.bucket_size(0);
+  min = hT2.bucket_size(0);
+  max = min;
   for (auto i = 1; i < 10; i++) {
     unsigned int bucket = hT2.bucket_size(i);
     if (bucket < min)
@@ -123,9 +126,68 @@ unsigned int ItemPallet::bestHashing() {
     else if (bucket > max)
       max = bucket;
   }
-  best = max - min;
+  if (max - min < best_balance) {
+    best_balance = max - min;
+    best_hash_table = 2;
+  }
 
-  return 100;
+  min = hT3.bucket_size(0);
+  max = min;
+  for (auto i = 1; i < 10; i++) {
+    unsigned int bucket = hT3.bucket_size(i);
+    if (bucket < min)
+      min = bucket;
+    else if (bucket > max)
+      max = bucket;
+  }
+  if (max - min < best_balance) {
+    best_balance = max - min;
+    best_hash_table = 3;
+  }
+
+  min = hT4.bucket_size(0);
+  max = min;
+  for (auto i = 1; i < 10; i++) {
+    unsigned int bucket = hT4.bucket_size(i);
+    if (bucket < min)
+      min = bucket;
+    else if (bucket > max)
+      max = bucket;
+  }
+  if (max - min < best_balance) {
+    best_balance = max - min;
+    best_hash_table = 4;
+  }
+
+  min = hT5.bucket_size(0);
+  max = min;
+  for (auto i = 1; i < 10; i++) {
+    unsigned int bucket = hT5.bucket_size(i);
+    if (bucket < min)
+      min = bucket;
+    else if (bucket > max)
+      max = bucket;
+  }
+  if (max - min < best_balance) {
+    best_balance = max - min;
+    best_hash_table = 5;
+  }
+
+  min = hT6.bucket_size(0);
+  max = min;
+  for (auto i = 1; i < 10; i++) {
+    unsigned int bucket = hT6.bucket_size(i);
+    if (bucket < min)
+      min = bucket;
+    else if (bucket > max)
+      max = bucket;
+  }
+  if (max - min < best_balance) {
+    best_balance = max - min;
+    best_hash_table = 6;
+  }
+
+  return best_hash_table;
 
 }
 
