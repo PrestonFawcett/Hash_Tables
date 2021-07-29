@@ -86,8 +86,52 @@ bool ItemPallet::removeItem(unsigned int sku) {
   // function that removes the pair of glasses specified by the sku from the display
   // if pair is found, then it is removed and the function returns true
   // else returns false
+  std::unordered_map<unsigned int, Item, decltype(&hashfct1)>:: iterator iter;
+  bool found = false;
 
-    return true;
+  for (iter = hT1.begin(); iter != hT1.end(); iter++) {
+    if (iter->first == sku){
+      hT1.erase(iter);
+      found = true;
+    }
+  }
+  
+  for (iter = hT2.begin(); iter != hT1.end(); iter++) {
+    if (iter->first == sku){
+      hT2.erase(iter);
+      found = true;
+    }
+  }
+
+  for (iter = hT3.begin(); iter != hT1.end(); iter++) {
+    if (iter->first == sku){
+      hT3.erase(iter);
+      found = true;
+    }
+  }
+
+  for (iter = hT4.begin(); iter != hT1.end(); iter++) {
+    if (iter->first == sku){
+      hT4.erase(iter);
+      found = true;
+    }
+  }
+
+  for (iter = hT5.begin(); iter != hT1.end(); iter++) {
+    if (iter->first == sku){
+      hT5.erase(iter);
+      found = true;
+    }
+  }
+
+  for (iter = hT6.begin(); iter != hT1.end(); iter++) {
+    if (iter->first == sku){
+      hT6.erase(iter);
+      found = true;
+    }
+  }
+
+  return found;
 }
 
 unsigned int ItemPallet::bestHashing() {
